@@ -24,6 +24,7 @@ const LoginBox = styled.input `
   outline: none;
   border: 0;
   background-color:lightgray;
+  padding-left:10px;
 `
 
 //회원가입 글자
