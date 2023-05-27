@@ -26,12 +26,33 @@ const StyledButtonBig = styled(StyledButton) `
   font-size:40px;
 `;
 
-//하나의 버튼만 나타낼 때
+//JoinMembership의 중복확인 버튼(크기가 작은 버튼)
+const StyledButtonSmall = styled(StyledButton) `
+  width:60px;
+  height:30px;
+  font-size:12px;
+`
+//하나의 버튼만 가운데정렬해서 나타낼 때
 const SingleButtonWrapper = styled.div `
   position:relative;
   text-align:center;
   left:50%;
   transform:translateX(-50%);
+`;
+
+//하나의 버튼만 inline으로 나타낼 때
+const SingleButtonWrapperInline = styled.div `
+  display:inline-block;
+  position:absolute;
+  right:10px;
+
+`;
+
+const SingleButtonWrapperInline2 = styled.div `
+  position:relative;
+  text-align:center;
+  left:130px;
+  bottom:50px;
 `;
 
 //한 행에 두 개의 버튼을 나타낼 때
@@ -52,6 +73,24 @@ const Button = (props) => {
 
       </div>)
     }
+    else if(props.show === 'small') {
+      return (
+        <>
+        <SingleButtonWrapperInline>
+         <StyledButtonSmall >{props.name}</StyledButtonSmall >
+        </SingleButtonWrapperInline>
+        </> 
+      )
+    }
+    else if(props.show === '중복') {
+      return (
+        <>
+        <SingleButtonWrapperInline2>
+         <StyledButtonSmall >{props.name}</StyledButtonSmall >
+        </SingleButtonWrapperInline2>
+        </> 
+      )
+      }
     else if(props.show === 'many') {
       return (
         <>
