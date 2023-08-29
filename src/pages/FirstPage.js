@@ -13,15 +13,15 @@ import './FirstPage.css'
 export const Center = styled.div`
   display: inline-block;
   font-size: 40px;
-  margin-bottom: 10px;
+  margin-top: 6%;
 `
 export const Image = styled.img`
-  width: 80%;
-  height: 80%;
+  width: 65%;
+  height: 50%;
 `
 // - or -
 const HorizenContainer = styled.div`
-  margin-top: 10%;
+  margin-top: 5%;
   text-align: center;
 `
 const Horizen = styled.hr`
@@ -40,7 +40,6 @@ const Or = styled.div`
 const Join = styled.div`
   text-align: center;
   text-decoration: none;
-  margin-top: 2%;
 `
 const JoinText = styled.button`
   display: inline-block;
@@ -80,7 +79,7 @@ function FirstPage() {
     // 백엔드와의 통신을 위한 fetch함수 사용
     let item = { email, password }
     //'http://13.125.209.54:8080/api/auth/login'
-    fetch('http://localhost:8080/api/auth/login', {
+    fetch('http://13.125.209.54:8080/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -104,12 +103,11 @@ function FirstPage() {
   }
 
   return (
-    <div className="fp-container">
-      <Top state="invisible" />
-
+    <div className="fp-container"> 
       <div className="home-tit-container" style={{ textAlign: 'center' }}>
         <Center>
           <h1 className="home-tlt">IN-PLATFORM</h1>
+          <div className="info-text">퇴행성 관절염 자가 진단 어플리케이션</div>
           <Image src={Walking} />
         </Center>
       </div>

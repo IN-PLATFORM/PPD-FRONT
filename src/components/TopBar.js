@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import footprintImg from '../images/footprint.png';
 
+
 export const TopContainer = styled.div `
   height: 70px;
   background-color: #0c2752;
@@ -12,6 +13,7 @@ export const TopContainer = styled.div `
   justify-content: center;
   align-items: center;
   border: none;
+
 `
 export const Top = styled.div `
   display: inline-block;
@@ -29,9 +31,19 @@ const Home = styled.img `
   right: 20px;
 `
 
+const Logo = styled.div `
+  display: inline-block;
+  position: absolute;
+  left: 10px;
+  font-size: 13px;
+`
+
 export const TopBar = (props) => {
   return (
     <TopContainer>
+      <Logo>
+        𝓘𝓷-𝓟𝓵𝓪𝓽𝓯𝓸𝓻𝓶
+      </Logo>
       <Top>
         {props.text}
       </Top>

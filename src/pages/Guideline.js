@@ -14,8 +14,8 @@ const ContextContainer = styled.div`
 `
 
 const Context = styled.div`
-  margin: 10px 20px;
-  font-size: 18px;
+  margin: 6px 6px;
+  font-size: 16px;
   padding-top: 20px;
   background-color: #c8d0db;
   border-radius: 40px;
@@ -41,7 +41,7 @@ const MemoContainer = styled.div`
 const Memo = styled.div`
   background-color: #e0e0e0;
   width: 80%;
-  height: 220px;
+  height: 120px;
   border-radius: 40px;
   padding: 10px;
   font-size: 20px;
@@ -49,7 +49,7 @@ const Memo = styled.div`
   display: inline-block;
 `
 const MemoContext = styled.div`
-  margin-top: 30px;
+  margin-top: 14px;
 `
 const WarnImageContainer = styled.div`
   display: flex;
@@ -61,7 +61,7 @@ const WarnImage = styled.img`
   width: 60px;
   height: 60px;
   position: relative;
-  top: 30px;
+  top: 20px;
 `
 
 // 카메라모양 버튼
@@ -117,11 +117,6 @@ function Guideline() {
           <MemoContext>
             <FaCheck color="red" style={{ marginRight: '4px' }} />
             촬영 환경에 따라 신체를 인식하지 못할 수 있습니다.
-          </MemoContext>
-
-          <MemoContext>
-            <FaCheck color="red" style={{ marginRight: '4px' }} />
-            모바일의 경우, 동영상을 업로드할 수 있습니다.
           </MemoContext>
         </Memo>
       </MemoContainer>

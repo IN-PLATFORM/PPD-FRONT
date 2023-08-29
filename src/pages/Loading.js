@@ -8,7 +8,7 @@ import '../styles/Loading.css'
 function Loading() {
     return (
         <div>
-            <TopBar></TopBar>
+            <TopBar text='분석중'></TopBar>
             <div className="textShow">결과를 계산중입니다.</div>
             <div className="svg-loader">
                 <svg className="svg-container" height="100" width="100" viewBox="0 0 100 100">

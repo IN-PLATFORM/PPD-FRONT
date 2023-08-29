@@ -9,6 +9,9 @@ import {useState, useEffect, useRef} from 'react';
 import styled from 'styled-components';
 import sound from '../sound/beep.mp3';
 import Walking from '../images/walking_image.png'
+import Camera from '../images/record-camera.png'
+import Result from '../images/record-result.png'
+import TopBar from '../components/TopBar'
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -19,21 +22,43 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledButton = styled.button`
-  background-color: skyblue;
+  background-color: #13366e;
+  color: white;
   border: none;
-  border-radius: 10px;
-  padding: 60px 130px;
-  margin: 30px;
+  width: 300px;
+  height: 11.5rem;
+  border-radius: 20px;
+  margin: 40px;
   cursor: pointer;
-  font-size: 20px;
+  padding: 0;
+  font-size: 34px;
   font-weight: bold;
-  color: black;
+  &:hover {
+    box-shadow: 1px 1px 20px #656467;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 `;
 
-const LargerButton = styled(StyledButton)`
-  height: 138px; 
-  padding: 75px 145px;
-`;
+const ImageContainer = styled.div`
+  padding: 0;
+  background-color: #f5f5f5;
+  height: 8rem;
+  width: 300px;
+  margin-bottom: 8px;
+  border-radius: 20px 20px 0 0;
+`
+
+const ButtonImage = styled.img`
+  width: 150px;
+  height: 7rem;
+  padding: 0;
+  position: relative;
+  top: 0.5rem;
+`
+
 
 function isMobileDevice() {
   return window.innerWidth <= 768; // 예시로 최대 픽셀 너비를 768로 설정
@@ -170,6 +195,8 @@ function Record() {
       };
       
       return (
+        <>
+        <TopBar text='측정'/>
         <ButtonContainer>
            <input
               ref={inputRef}
@@ -184,17 +211,24 @@ function Record() {
                   }
               }}
           />
-          {recordedVideoURL && <video controls src={recordedVideoURL} />}
-          <LargerButton onClick={() => {
+          {recordedVideoURL && <video controls src={recordedVideoURL} />}  
+          <StyledButton onClick={() => {
             mobileTTS();
             mobileTTS2(); 
             handleBeepSound(); 
             inputRef.current.click(); 
-          }}>촬영</LargerButton>
-          <Link to="/Loading">
-              <StyledButton onClick={uploadVideo}>결과확인</StyledButton>
+          }}>
+            <ImageContainer><ButtonImage src={Camera} /></ImageContainer>
+            촬영
+            </StyledButton>
+          <Link to="/Loading" style={{"textDecoration":"none"}}>
+              <StyledButton onClick={uploadVideo}>
+              <ImageContainer><ButtonImage src={Result} /></ImageContainer>
+                결과확인
+                </StyledButton>
           </Link>
         </ButtonContainer>
+        </>
       );
     }
 
