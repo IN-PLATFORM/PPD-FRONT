@@ -107,7 +107,7 @@ function FirstPage() {
       <div className="home-tit-container" style={{ textAlign: 'center' }}>
         <Center>
           <h1 className="home-tlt">IN-PLATFORM</h1>
-          <div className="info-text">퇴행성 관절염 자가 진단 어플리케이션</div>
+          <div className="info-text">퇴행성 관절염 진단 보조 어플리케이션</div>
           <Image src={Walking} />
         </Center>
       </div>

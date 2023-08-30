@@ -41,9 +41,6 @@ const Logo = styled.div `
 export const TopBar = (props) => {
   return (
     <TopContainer>
-      <Logo>
-        𝓘𝓷-𝓟𝓵𝓪𝓽𝓯𝓸𝓻𝓶
-      </Logo>
       <Top>
         {props.text}
       </Top>

@@ -41,10 +41,10 @@ const MemoContainer = styled.div`
 const Memo = styled.div`
   background-color: #e0e0e0;
   width: 80%;
-  height: 120px;
+  height: 140px;
   border-radius: 40px;
   padding: 10px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bolder;
   display: inline-block;
 `
@@ -73,11 +73,11 @@ const ButtonContainer = styled.div`
 `
 const Button = styled.button`
   background-color: #e3e3e3;
-  width: 110px;
-  height: 110px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   border: 2px solid #383838;
-  margin-top: 30px;
+  margin-top: 20px;
   transition: 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   &:hover {
     background-color: #d16a64;
@@ -99,9 +99,9 @@ function Guideline() {
           촬영버튼을 눌러주세요.
         </Context>
         <FaArrowDown size="24px" color="#041d63" style={{ margin: '0 auto' }} />
-        <Context2>② 안내음성에 따라 보행을 진행해주세요.</Context2>
+        <Context2>② 안내음성에 따라 보행을 시작해주세요.</Context2>
         <FaArrowDown size="24px" color="#041d63" style={{ margin: '0 auto' }} />
-        <Context3>③ 측정 후 잠시 기다리면 결과를 확인할 수 있습니다.</Context3>
+        <Context3>③ 녹화 종료 후, 결과확인 버튼을 눌러주세요</Context3>
       </ContextContainer>
 
       <WarnImageContainer>
@@ -111,12 +111,17 @@ function Guideline() {
         <Memo>
           <MemoContext>
             <FaCheck color="red" style={{ marginRight: '4px' }} />
-            촬영은 10초간 진행됩니다.
+            화면을 벗어날 때까지 걸어주세요.
           </MemoContext>
 
           <MemoContext>
             <FaCheck color="red" style={{ marginRight: '4px' }} />
             촬영 환경에 따라 신체를 인식하지 못할 수 있습니다.
+          </MemoContext>
+
+          <MemoContext>
+            <FaCheck color="red" style={{ marginRight: '4px' }} />
+            보호자를 동반하는 것을 권장합니다.
           </MemoContext>
         </Memo>
       </MemoContainer>

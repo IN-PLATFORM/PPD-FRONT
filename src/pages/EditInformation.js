@@ -62,7 +62,7 @@ function EditInformation() {
 
         // post 요청
         //http://13.125.209.54:8080/api/user/me/update
-        fetch('http://localhost:8080/api/user/me/update', {
+        fetch('http://13.125.209.54:8080/api/user/me/update', {
             method:"PUT",
             headers : {
                 Authorization: `Bearer ${localStorage.getItem('access_token')}`,

@@ -124,7 +124,7 @@ function MyInformation() {
 
   const infoFetch = () => {
     //'http://13.125.209.54:8080/api/user/me'
-    fetch('http://localhost:8080/api/user/me', {
+    fetch('http://13.125.209.54:8080/api/user/me', {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('access_token'),

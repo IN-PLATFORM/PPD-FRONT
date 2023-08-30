@@ -1,5 +1,5 @@
 import '../App.css';
-import Top from '../components/Top'
+import TopBar from '../components/TopBar'
 import Button from '../components/Button'
 import styled from 'styled-components';
 import '../styles/Loading.css'
@@ -89,7 +89,7 @@ function ResultDetail() {
 
     return (
         <div>
-            <Top state='visible' text="상세결과" home="true" back="true"></Top>
+            <TopBar text="상세결과"></TopBar>
 
             <GraphSpace>
                 <ReactApexChart 

@@ -52,7 +52,7 @@ const ImageContainer = styled.div`
 `
 
 const ButtonImage = styled.img`
-  width: 150px;
+  width: 130px;
   height: 7rem;
   padding: 0;
   position: relative;
@@ -69,11 +69,11 @@ function Record() {
     const navigate_abnormal = useNavigate();
     const navigate_record = useNavigate();
     const navigate = useNavigate();
-    const videoTagRef = useRef(null);
+    let videoTagRef = useRef(null);
     let videoMediaStream = null;
-    const inputRef = useRef(null);
-    const [videoBlob] = useState(null);
-    const [recordedVideoURL] = useState('');
+    let inputRef = useRef(null);
+    let [videoBlob] = useState(null);
+    let [recordedVideoURL] = useState('');
 
 
     let videoRecorder = null;
@@ -165,7 +165,20 @@ function Record() {
       };
       
       const mobileTTS = () => {
-        const message = "5초 뒤, 삐 소리와 함께 촬영이 시작됩니다.";
+        const message = "촬영버튼을 눌러주세요. 지정된 장소로 가주세요.";
+      
+        if ("speechSynthesis" in window) {
+          const speech = new SpeechSynthesisUtterance(message);
+          speech.lang = "ko-KR"; // 한국어로 설정, 필요에 따라 조정할 수 있습니다.
+          speech.rate = 0.8; // 음성 속도를 느리게 설정
+  
+          speechSynthesis.speak(speech);
+        } else {
+          console.error("이 브라우저에서는 SpeechSynthesis를 지원하지 않습니다.");
+        }
+      };
+      const mobileTTS3 = () => {
+        const message = "5초 뒤에 촬영이 시작됩니다. 시작소리에 맞춰 걸어주세요.";
       
         if ("speechSynthesis" in window) {
           const speech = new SpeechSynthesisUtterance(message);
@@ -180,7 +193,7 @@ function Record() {
 
       const mobileTTS2 = () => {
         setTimeout(() => {
-          const message = "5, 4, 3, 2, 1";
+          const message = "5, 4, 3, 2, 1 시작";
       
           if ("speechSynthesis" in window) {
             const speech = new SpeechSynthesisUtterance(message);
@@ -214,8 +227,14 @@ function Record() {
           {recordedVideoURL && <video controls src={recordedVideoURL} />}  
           <StyledButton onClick={() => {
             mobileTTS();
-            mobileTTS2(); 
-            handleBeepSound(); 
+            setTimeout(() => {
+              mobileTTS3(); 
+            }, 6000); // 10초 (10000 밀리초) 후에 실행 
+
+            setTimeout(() => {
+              mobileTTS2(); 
+            }, 4000); // 10초 (10000 밀리초) 후에 실행 
+
             inputRef.current.click(); 
           }}>
             <ImageContainer><ButtonImage src={Camera} /></ImageContainer>
@@ -358,7 +377,7 @@ function Record() {
         // 삐 소리
         handleBeepSound();
         VideoCaptureEnd(); // VideoCaptureEnd() 함수 호출
-      }, 4000); // 20초 (20000 밀리초) 후에 촬영 종료
+      }, 5000); // 20초 (20000 밀리초) 후에 촬영 종료
     }
 
     return (

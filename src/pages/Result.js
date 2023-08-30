@@ -52,7 +52,7 @@ const FeatureIcon = styled.span `
 
 const FeatureResult = styled.div`
   text-align: center;
-  width: 200px;
+  width: 280px;
   height: 80px;
   margin: auto;
   margin-top: 20px;
@@ -95,7 +95,7 @@ function Result() {
   // 기록 서버에 저장
   const saveRecord = () => {
     //http://13.125.209.54:8080/api/joint/new
-    fetch('http://localhost:8080/api/joint/new', {
+    fetch('http://13.125.209.54:8080/api/joint/new', {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('access_token')}`,
