@@ -1,10 +1,10 @@
-import '../App.css'
-import Top from '../components/Top'
-import { JoinModal } from '../components/Modal'
-import { useState } from 'react'
-import styled from 'styled-components'
-import { BlueButton, BlueButtonContainer } from '../components/Button'
-import { TextInput, TextInputContainer } from '../components/Input'
+import "../App.css";
+import Top from "../components/Top";
+import { JoinModal } from "../components/Modal";
+import { useState } from "react";
+import styled from "styled-components";
+import { BlueButton, BlueButtonContainer } from "../components/Button";
+import { TextInput, TextInputContainer } from "../components/Input";
 
 // In-Platform
 const Logo = styled.div`
@@ -12,19 +12,19 @@ const Logo = styled.div`
   text-align: center;
   height: 100px;
   margin-top: 150px;
-`
+`;
 // 가입하기 버튼
 const JoinButton = styled(BlueButton)`
   margin: 30px;
-`
+`;
 const JoinInput = styled(TextInput)`
   margin: 4px;
-`
+`;
 
 export const InformationText = styled.span`
   font-size: 30px;
   font-weight: bolder;
-`
+`;
 export const InputInformation = styled.input`
   position: absolute;
   left: 30%;
@@ -34,12 +34,12 @@ export const InputInformation = styled.input`
   border: 1px solid black;
   background-color: #f2f2f2;
   border-radius: 20px;
-  ${props =>
-    props.type === 'password' &&
+  ${(props) =>
+    props.type === "password" &&
     `
      font: normal 62.5% "Lucida Sans Unicode",sans-serif;
     `}
-`
+`;
 
 //개인정보 활용 동의 창
 const TextContainer = styled.div`
@@ -56,7 +56,7 @@ const TextContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 // 체크박스
 const CheckBoxInput = styled.input`
@@ -76,7 +76,7 @@ const CheckBoxInput = styled.input`
     background-repeat: no-repeat;
     background-color: blue;
   }
-`
+`;
 
 //이름~나이까지의 Information component를 포함하는 container
 export const InformationContainer = styled.div`
@@ -84,7 +84,7 @@ export const InformationContainer = styled.div`
   width: 400px;
   margin: auto;
   padding-left: 10px;
-`
+`;
 
 const CheckboxContainer = styled.div`
   position: relative;
@@ -92,82 +92,82 @@ const CheckboxContainer = styled.div`
   margin: auto;
   padding-left: 10px;
   padding-top: 30px;
-`
+`;
 
 function JoinMembership() {
   // 회원 정보를 담는 state
   const [user, setUser] = useState({
-    name: '',
+    name: "",
     age: 0,
-    email: '',
-    password: '',
-  })
+    email: "",
+    password: "",
+  });
 
   // 정보 입력 시(onChange) 실행
-  const handleChange = e => {
+  const handleChange = (e) => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   // 정보 활용 동의 여부에 대한 state
-  const [agree, setAgree] = useState(false)
+  const [agree, setAgree] = useState(false);
 
-  const handleChangeAgree = e => {
-    console.log(e.target.checked)
-    setAgree(e.target.checked)
-  }
+  const handleChangeAgree = (e) => {
+    console.log(e.target.checked);
+    setAgree(e.target.checked);
+  };
 
   // 가입완료 모달창에 대한 상태변수
-  const [modalOpen, setModalOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false);
   function openModal() {
-    setModalOpen(true)
+    setModalOpen(true);
   }
   function closeModal() {
-    setModalOpen(false)
+    setModalOpen(false);
   }
 
   // 가입하기 버튼 누르면 실행
   function joinFetch() {
     // 형식 관련 조건들
-    if (user.name === '' || user.email === '' || user.age === 0) {
-      alert('모든 항목을 작성해주세요')
-      return
+    if (user.name === "" || user.email === "" || user.age === 0) {
+      alert("모든 항목을 작성해주세요");
+      return;
     }
-    if (!user.email.includes('@')) {
-      alert('이메일 형식을 제대로 작성해주세요(@)')
-      return
+    if (!user.email.includes("@")) {
+      alert("이메일 형식을 제대로 작성해주세요(@)");
+      return;
     }
-    if (user.name.includes(' ') || user.email.includes(' ')) {
-      alert('공백은 포함될 수 없습니다')
-      return
+    if (user.name.includes(" ") || user.email.includes(" ")) {
+      alert("공백은 포함될 수 없습니다");
+      return;
     }
 
     if (!agree) {
-      alert('개인정보 활용에 동의해주세요.')
-      return
+      alert("개인정보 활용에 동의해주세요.");
+      return;
     }
 
-    fetch('http://13.125.209.54:8080/api/auth/signup', {
-      method: 'POST',
+    fetch("http://localhost:8080/api/auth/signup", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify(user),
     })
-      .then(response => response.json())
-      .then(response => {
-        if (response.status === 'OK') {
-          alert('회원가입 성공!')
-          openModal()
-        } else if (response.status === 'USER_DUPLICATED') {
-          alert('이미 존재하는 사용자 입니다.')
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.status === "OK") {
+          alert("회원가입 성공!");
+          openModal();
+        } else if (response.status === "USER_DUPLICATED") {
+          alert("이미 존재하는 사용자 입니다.");
         } else {
-          alert('회원가입 실패!')
+          alert("회원가입 실패!");
         }
-      })
+      });
   }
 
   return (
@@ -211,8 +211,7 @@ function JoinMembership() {
         <CheckBoxInput
           name="agree"
           type="checkbox"
-          onClick={handleChangeAgree}
-        ></CheckBoxInput>
+          onClick={handleChangeAgree}></CheckBoxInput>
       </CheckboxContainer>
 
       <BlueButtonContainer>
@@ -223,11 +222,10 @@ function JoinMembership() {
         <JoinModal
           header="가입이 완료되었습니다"
           open={modalOpen}
-          cloas={closeModal}
-        ></JoinModal>
+          cloas={closeModal}></JoinModal>
       ) : null}
     </div>
-  )
+  );
 }
 
-export default JoinMembership
+export default JoinMembership;
